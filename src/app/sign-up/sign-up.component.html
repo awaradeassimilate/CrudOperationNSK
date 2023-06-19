@@ -1,0 +1,76 @@
+<form *ngIf="!isVisible">
+
+    <body> <!-- partial:index.partial.html -->
+
+        <section>
+            <div class="signin">
+                <div class="content">
+                    <h2>Sign In</h2>
+                    <div class="form">
+                        <div class="inputBox">
+                            <input type="text"> <i>Username</i>
+                        </div>
+                        <div class="inputBox">
+                            <input type="password" required> <i>Password</i>
+                        </div>
+                        <button type="button" class="btn btn-small" (click)="isVisibleDom()">SignUp</button>
+                        <div class="inputBox">
+                            <button type="button" class="btn btn-success" (click)="goToDashboard()">
+                                Login
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> <!-- partial -->
+    </body>
+</form>
+
+<div class="signupFrm" *ngIf="isVisible">
+    <form [formGroup]="signUpForm" action="" class="form">
+        <h1 class="title">Sign up</h1>
+        <div class="form-group">
+            <div class="inputContainer">
+                <input type="text" class="input" placeholder="a" formControlName="email">
+                <label for="" class="label">Email</label>
+            </div>
+            <div *ngIf="!signUpForm.get('email')?.valid && signUpForm.get('email')?.touched">
+                <small class="text-danger">Email is required</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="inputContainer">
+                <input type="text" class="input" placeholder="a" formControlName="username">
+                <label for="" class="label">Username</label>
+            </div>
+            <div *ngIf="!signUpForm.get('username')?.valid && signUpForm.get('username')?.touched">
+                <small class="text-danger">Username is required</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="inputContainer">
+                <input type="text" class="input" placeholder="a" formControlName="password">
+                <label for="" class="label">Password</label>
+
+            </div>
+            <div *ngIf="!signUpForm.get('password')?.valid && signUpForm.get('password')?.touched">
+                <small class="text-danger">Password is required</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="inputContainer">
+                <input type="text" class="input" placeholder="a" formControlName="confirmPass">
+                <label for="" class="label">Confirm Password</label>
+            </div>
+            <div *ngIf="!signUpForm.get('confirmPass')?.valid && signUpForm.get('confirmPass')?.touched">
+                <small class="text-danger">Confirm Password is required</small>
+            </div>
+        </div>
+        <button type="button" class="btn btn-success" (click)="goToDashboard()" [disabled]="signUpForm.invalid"> signup
+        </button>
+    </form>
+</div>
+<!doctype html>
+
+
+<!-- <router-outlet></router-outlet> -->
