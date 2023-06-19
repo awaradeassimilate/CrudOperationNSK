@@ -51,9 +51,7 @@ export class DashboardComponent {
 
   }
   getAllEmployee() {
-
     this.employeeData = this.crud.getEmployees()
-
   }
   addData() {
     //this.submitted = true;
@@ -72,12 +70,6 @@ export class DashboardComponent {
     this.employeeData.splice(postdata, 1);
   }
   onEdit(data: any) {
-    // this.dashboardForm.controls['firstaName'].setValue(data.firstaName);
-    // this.dashboardForm.controls['lastName'].setValue(data.lastName);
-    // this.dashboardForm.controls['email'].setValue(data.email);
-    // this.dashboardForm.controls['mobileNumber'].setValue(data.mobileNumber);
-    // this.dashboardForm.controls['salary'].setValue(data.salary)
-
     this.dashboardForm.patchValue(data);
     this.isEdit = true;
     this.message.add({ severity: 'success', summary: 'Success' });
@@ -89,8 +81,6 @@ export class DashboardComponent {
     }
     this.employeeData.id = this.crud.getEmployees();
     this.isEdit = false;
-
+    this.dashboardForm.reset()
   }
-
-
 }
